@@ -8,10 +8,12 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_slideshow">Slideshow</string>
-    <string name="involta_day1">Involta.Day1</string>
+    <string name="involta_day2">Involta.Day2</string>
     <string name="recyclelistview">RecycleListView</string>
     <string name="image_only">Image only</string>
     <string name="text_only">Text only</string>
+    <string name="text_with_image">Text with image</string>
+    <string name="text_or_image">Text or image</string>
 
 
     <integer-array name="images">

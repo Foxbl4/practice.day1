@@ -1,7 +1,9 @@
 package com.example.involtaday1.ui.text
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.involtaday1.R
 import kotlinx.android.synthetic.main.text_recycler_view.view.*

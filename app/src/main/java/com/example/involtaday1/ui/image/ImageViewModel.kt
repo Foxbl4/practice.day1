@@ -10,11 +10,12 @@ import com.example.involtaday1.R
 class ImageViewModel(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.image_recycler_view, parent, false)) {
 
-    var mYearView : ImageView = itemView.findViewById(R.id.list_image)
+    private var mImageView : ImageView = itemView.findViewById(R.id.list_image)
 
     fun bind(mImage: Int) {
-        mYearView.setImageResource(mImage)
+        this.mImageView.setImageResource(mImage)
     }
+
 }
 
 class ListAdapter(private val list: List<Int>) : RecyclerView.Adapter<ImageViewModel>() {
@@ -30,4 +31,6 @@ class ListAdapter(private val list: List<Int>) : RecyclerView.Adapter<ImageViewM
     }
 
     override fun getItemCount(): Int = list.size
+
+
 }

@@ -17,10 +17,6 @@ class ImageFragment : Fragment() {
         R.drawable.image_4, R.drawable.image_5, R.drawable.image_6,R.drawable.image_7,
         R.drawable.image_8, R.drawable.image_9, R.drawable.image_10)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
-    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_image, container, false)

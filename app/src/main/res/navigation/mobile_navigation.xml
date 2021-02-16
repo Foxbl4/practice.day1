@@ -3,17 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_text">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_text"
         android:name="com.example.involtaday1.ui.text.TextFragment"
         android:label="@string/text_only"
         tools:layout="@layout/fragment_text" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_image"
         android:name="com.example.involtaday1.ui.image.ImageFragment"
         android:label="@string/image_only"
         tools:layout="@layout/fragment_image" />
+
+    <fragment
+        android:id="@+id/nav_text_and_image"
+        android:name="com.example.involtaday1.ui.image_and_text.ImageAndTextFragment"
+        android:label="@string/text_with_image"
+        tools:layout="@layout/fragment_text_and_image" />
+
+    <fragment
+        android:id="@+id/nav_text_or_image"
+        android:name="com.example.involtaday1.ui.image_or_text.ImageOrTextFragment"
+        android:label="@string/text_with_image"
+        tools:layout="@layout/fragment_text_or_image" />
 </navigation>
