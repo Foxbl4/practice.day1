@@ -14,7 +14,17 @@
     <string name="text_only">Text only</string>
     <string name="text_with_image">Text with image</string>
     <string name="text_or_image">Text or image</string>
-
+    <string name="view_pager_2">View Pager 2</string>
+    <string name="btn_back">Назад</string>
+    <string name="btn_next">Далее</string>
+    <string name="btn_notification">notification</string>
+    <string name="btn_snackbar">snackbar</string>
+    <string name="btn_toast">toast</string>
+    <string name="btn_dialog">dialog</string>
+    <string name="notifications">Notifications</string>
+    <string name="test_notify_name">Тестовое уведомление</string>
+    <string name="test_notify_desc">Описание тестового уведомления</string>
+    <string name="notify_shown_text">Сегодня %1$s, время %2$s \nНажата кнопка %3$s</string>
 
     <integer-array name="images">
         <item>@drawable/image_1</item>

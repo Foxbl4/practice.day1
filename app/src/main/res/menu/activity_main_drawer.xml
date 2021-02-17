@@ -20,5 +20,14 @@
             android:id="@+id/nav_text_or_image"
             android:icon="@drawable/ic_baseline_image_search_24"
             android:title="@string/text_or_image" />
+        <item
+            android:id="@+id/nav_view_pager"
+            android:icon="@drawable/ic_baseline_pageview_24"
+            android:title="@string/view_pager_2" />
+        <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/ic_baseline_notifications_24"
+            android:title="@string/notifications" />
+
     </group>
 </menu>
