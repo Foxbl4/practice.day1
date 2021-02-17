@@ -41,8 +41,11 @@ object NotificationHelper {
 
         val builder = NotificationCompat.Builder(context, notifyFragmentChannelId)
             .setContentText(msg)
-            .setSmallIcon(R.drawable.image_1)
+            .setContentTitle("This is Notification!")
+            .setSmallIcon(R.drawable.ic_baseline_image_search_24)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setStyle(NotificationCompat.BigTextStyle()
+                .bigText(msg))
 
         with(NotificationManagerCompat.from(context)) {
             notify(notifyFragmentId, builder.build())

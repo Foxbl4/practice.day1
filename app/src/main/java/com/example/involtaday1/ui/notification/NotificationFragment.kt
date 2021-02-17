@@ -6,17 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import com.example.involtaday1.R
-import com.example.involtaday1.ui.view_pager.ViewPagerAdapter
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.fragment_image.*
 import kotlinx.android.synthetic.main.fragment_notify.*
-import kotlinx.android.synthetic.main.fragment_view_pager.*
 import org.jetbrains.anko.support.v4.toast
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -47,19 +42,23 @@ class NotificationFragment : Fragment() {
                 R.id.btn_notification -> showNotification(msg)
                 R.id.btn_toast -> toast(msg)
                 R.id.btn_dialog -> showDialog(msg)
-                R.id.btn_snackbar ->   Snackbar.make(view, msg, Snackbar.LENGTH_LONG).show()
+                R.id.btn_snackbar -> Snackbar.make(view, msg, Snackbar.LENGTH_LONG).show()
             }
         }
     }
 
     private fun getShownMessage(button: Button): String {
-        val c = Calendar.getInstance()
-        val month = c.get(Calendar.MONTH)+1
-        val day = c.get(Calendar.DAY_OF_MONTH)
 
+        val currentDate = Date()
+
+        val dateFormat: DateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+        val dateText: String = dateFormat.format(currentDate)
+
+        val timeFormat: DateFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+        val timeText: String = timeFormat.format(currentDate)
         val buttonText = button.text
 
-        return getString(R.string.notify_shown_text, "$month месяц по счёту", "$day число", buttonText)
+        return getString(R.string.notify_shown_text, dateText, timeText, buttonText)
     }
 
     private fun showDialog(msg: String) {
