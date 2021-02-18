@@ -30,7 +30,7 @@ class ViewPagerFragment : Fragment() {
         TabLayoutMediator(tlPagination, viewPager2) { _: TabLayout.Tab, _: Int -> }.attach()
 
         bPrev.setOnClickListener { viewPager2.scrollIndefinitelyBack() }
-        bNext.setOnClickListener { viewPager2.scrollIndefinitelyNext()}
+        bNext.setOnClickListener { viewPager2.scrollIndefinitelyNext() }
     }
 
     private  fun ViewPager2.scrollIndefinitelyNext() {

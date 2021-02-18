@@ -1,6 +1,5 @@
 package com.example.involtaday1.ui.view_pager
 
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.involtaday1.R
 import kotlinx.android.synthetic.main.item_view_page.view.*
-
-
 
 class ViewPagerAdapter(viewPagerFragment: ViewPagerFragment) : RecyclerView.Adapter<PagerVH>() {
 
