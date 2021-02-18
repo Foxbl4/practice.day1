@@ -12,29 +12,10 @@ import kotlinx.android.synthetic.main.fragment_text_or_image.*
 
 class ImageOrTextFragment : Fragment() {
 
-    private val imgOrTxtArray = listOf(
-        TextOrImageModel.Text("Кошечка Исъкьюзми"),
-        TextOrImageModel.Image(R.drawable.image_1),
-        TextOrImageModel.Text("Ушастик - Глазастик"),
-        TextOrImageModel.Image(R.drawable.image_2),
-        TextOrImageModel.Text("Кошка-истеричка"),
-        TextOrImageModel.Image(R.drawable.image_3),
-        TextOrImageModel.Text("Приветствие Кошки"),
-        TextOrImageModel.Image(R.drawable.image_4),
-        TextOrImageModel.Text("Кошка из общаги"),
-        TextOrImageModel.Image(R.drawable.image_5),
-        TextOrImageModel.Text("Кошка проснулась к первой паре"),
-        TextOrImageModel.Image(R.drawable.image_6),
-        TextOrImageModel.Text("Кошка хлебушек"),
-        TextOrImageModel.Image(R.drawable.image_7),
-        TextOrImageModel.Text("Кошка после 5-ти пар мат. анализа"),
-        TextOrImageModel.Image(R.drawable.image_8),
-        TextOrImageModel.Text("Когда не хватило на доширак"),
-        TextOrImageModel.Image(R.drawable.image_9),
-        TextOrImageModel.Text("Когда осознал что детство кончилось"),
-        TextOrImageModel.Image(R.drawable.image_10)
-    )
-    
+    private val imageOrTextAdapter: ListAdapter by lazy {
+        ListAdapter(this)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_text_or_image, container, false)
@@ -43,7 +24,7 @@ class ImageOrTextFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         text_or_image_recycler_view.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = ListAdapter(imgOrTxtArray)
+            adapter = imageOrTextAdapter
         }
     }
 }

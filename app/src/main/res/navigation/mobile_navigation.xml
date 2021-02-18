@@ -40,4 +40,10 @@
         android:name="com.example.involtaday1.ui.notification.NotificationFragment"
         android:label="Notifications"
         tools:layout="@layout/fragment_notify" />
+
+    <fragment
+        android:id="@+id/nav_image_gallery"
+        android:name="com.example.involtaday1.ui.image_gallery.ImageGalleryFragment"
+        android:label="GallerySearch"
+        tools:layout="@layout/fragment_gallery" />
 </navigation>
