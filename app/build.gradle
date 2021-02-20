@@ -59,4 +59,5 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation 'com.kbeanie:multipicker:1.6@aar'
+    implementation "androidx.webkit:webkit:1.4.0"
 }

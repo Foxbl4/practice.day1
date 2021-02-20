@@ -32,6 +32,10 @@
             android:id="@+id/nav_image_gallery"
             android:icon="@drawable/ic_baseline_broken_image_24"
             android:title="@string/gallerysearch" />
+        <item
+            android:id="@+id/nav_web_wiew"
+            android:icon="@drawable/ic_baseline_web_24"
+            android:title="@string/webview" />
 
     </group>
 </menu>

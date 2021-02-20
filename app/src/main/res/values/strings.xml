@@ -31,6 +31,8 @@
     <string name="input_image_txt">Выберите или сделайте фото и оно отобразится здесь</string>
     <string name="select_gallery_txt">выбрать</string>
     <string name="photo_image_txt">Сделать</string>
+    <string name="webview">WebView</string>
+    <string name="enter_web_site">Введите адрес сайта</string>
 
     <integer-array name="images">
         <item>@drawable/image_1</item>

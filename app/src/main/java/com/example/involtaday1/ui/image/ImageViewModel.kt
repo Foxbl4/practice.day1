@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.involtaday1.R
 
 
+
 class ImageViewModel(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.image_recycler_view, parent, false)) {
 
