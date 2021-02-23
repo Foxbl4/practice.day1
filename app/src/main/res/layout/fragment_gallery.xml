@@ -13,13 +13,13 @@
         android:layout_marginHorizontal="16dp"
         android:text="@string/input_image_txt"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPreview"
-        app:layout_constraintEnd_toEndOf="@+id/ivPreview"
-        app:layout_constraintStart_toStartOf="@+id/ivPreview"
-        app:layout_constraintTop_toTopOf="@+id/ivPreview" />
+        app:layout_constraintBottom_toBottomOf="@+id/img_gallery"
+        app:layout_constraintEnd_toEndOf="@+id/img_gallery"
+        app:layout_constraintStart_toStartOf="@+id/img_gallery"
+        app:layout_constraintTop_toTopOf="@+id/img_gallery" />
 
     <ImageView
-        android:id="@+id/ivPreview"
+        android:id="@+id/img_gallery"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:contentDescription="@string/input_image_txt"
@@ -30,27 +30,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/bPickPhoto"
+        android:id="@+id/pick_gallery_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/select_gallery_txt"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/bTakePhoto"
+        app:layout_constraintEnd_toStartOf="@id/take_gallery_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivPreview"
+        app:layout_constraintTop_toBottomOf="@id/img_gallery"
         app:layout_constraintVertical_bias="0" />
 
     <Button
-        android:id="@+id/bTakePhoto"
+        android:id="@+id/take_gallery_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/photo_image_txt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/bPickPhoto"
-        app:layout_constraintTop_toBottomOf="@id/ivPreview"
+        app:layout_constraintStart_toEndOf="@id/pick_gallery_btn"
+        app:layout_constraintTop_toBottomOf="@id/img_gallery"
         app:layout_constraintVertical_bias="0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

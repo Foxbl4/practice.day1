@@ -33,6 +33,12 @@
     <string name="photo_image_txt">Сделать</string>
     <string name="webview">WebView</string>
     <string name="enter_web_site">Введите адрес сайта</string>
+    <string name="db_search">Поиск</string>
+    <string name="db_index">Индекс записи</string>
+    <string name="db_insert">Вставить запись</string>
+    <string name="db_value">Значение записи</string>
+    <string name="bd_delete">Удалить запись</string>
+    <string name="database">DataBase</string>
 
     <integer-array name="images">
         <item>@drawable/image_1</item>
