@@ -1,14 +1,19 @@
 package com.example.involtaday1.ui.database
 
 import android.content.ContentValues
-import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.provider.BaseColumns
 import android.util.Log
+import androidx.fragment.app.FragmentActivity
 
 
-class DatabaseHandler(context: Context) :
-    SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
+class DatabaseHandler(context: FragmentActivity) : SQLiteOpenHelper(
+    context,
+    DB_NAME,
+    null,
+    DB_VERSION
+) {
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         TODO("not implemented")
@@ -32,9 +37,17 @@ class DatabaseHandler(context: Context) :
         return (Integer.parseInt("$success") != -1)
     }
 
-    fun getAllValues(): StringBuilder {
-        val allValues = StringBuilder()
+    fun delValue(user: DBU) {
+        val db = this.writableDatabase
+        val delCount = db.delete(TABLE_NAME, "$COLUMN_VALUES = ${user.values}", null)
+        db.close()
+        Log.v("InsertedID", "$delCount")
+    }
+
+
+    fun getAllColumns(): MutableList<String> {
         val db = readableDatabase
+        val listValues: MutableList<String> = mutableListOf()
         val selectALLQuery = "SELECT * FROM $TABLE_NAME"
         val cursor = db.rawQuery(selectALLQuery, null)
         if (cursor != null) {
@@ -43,44 +56,45 @@ class DatabaseHandler(context: Context) :
                     val value = cursor.getString(cursor.getColumnIndex(COLUMN_VALUES))
                     val id = cursor.getString(cursor.getColumnIndex(COLUMN_ID))
 
-                    allValues.append("$value ")
+                    listValues.add("$id. $value")
 
                 } while (cursor.moveToNext())
             }
         }
         cursor.close()
         db.close()
-        return allValues
+        return listValues
     }
 
-    fun getAllColumns(): StringBuilder {
-        val allValues = StringBuilder()
-        val db = readableDatabase
-        val selectALLQuery = "SELECT * FROM $TABLE_NAME"
-        val cursor = db.rawQuery(selectALLQuery, null)
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                do {
-                    val value = cursor.getString(cursor.getColumnIndex(COLUMN_VALUES))
-                    val id = cursor.getString(cursor.getColumnIndex(COLUMN_ID))
-
-                    allValues.append("$id. $value\n")
-
-                } while (cursor.moveToNext())
-            }
-        }
-        cursor.close()
-        db.close()
-        return allValues
-    }
-
-    fun delete(){
+    fun delete(word: String){
         val db = writableDatabase
         Log.d(LOG_TAG, "--- Clear mytable: ---")
-        // удаляем все записи
-        val clearCount = db.delete(TABLE_NAME, null, null)
-        Log.d(LOG_TAG, "deleted rows count = $clearCount")
+
+
+        db.execSQL("DELETE FROM InvoltaTable WHERE mValues='$word'")
+
+
     }
+
+    fun find(word: String): String {
+
+        val db = readableDatabase
+        val cursor = db.query(
+            TABLE_NAME, arrayOf(COLUMN_ID, COLUMN_VALUES), "$COLUMN_VALUES = ?",
+            arrayOf(word), null, null, null
+        )
+        cursor.moveToFirst()
+
+        val meanSearch = "${cursor.getString(cursor.getColumnIndex(COLUMN_ID))}. ${cursor.getString(
+            cursor.getColumnIndex(
+                COLUMN_VALUES
+            )
+        )}"
+        cursor.close()
+        db.close()
+        return meanSearch
+    }
+
 
     companion object {
         internal const val LOG_TAG = "myLogs"
