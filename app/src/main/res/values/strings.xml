@@ -39,6 +39,7 @@
     <string name="db_value">Значение записи</string>
     <string name="bd_delete">Удалить запись</string>
     <string name="database">DataBase</string>
+    <string name="databaseorm">DataBaseORM</string>
 
     <integer-array name="images">
         <item>@drawable/image_1</item>

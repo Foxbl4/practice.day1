@@ -59,4 +59,10 @@
         android:label="DataBase"
         tools:layout="@layout/fragment_database" />
 
+    <fragment
+        android:id="@+id/nav_database_orm"
+        android:name="com.example.involtaday1.ui.database_orm.DataBaseFragmentORM"
+        android:label="DataBase ORM"
+        tools:layout="@layout/fragment_database" />
+
 </navigation>

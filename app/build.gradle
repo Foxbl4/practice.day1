@@ -61,4 +61,16 @@ dependencies {
     implementation 'com.kbeanie:multipicker:1.6@aar'
     implementation "androidx.webkit:webkit:1.4.0"
 
+    def room_version = "2.2.6"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+
+
 }

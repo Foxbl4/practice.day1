@@ -42,5 +42,10 @@
             android:icon="@drawable/ic_baseline_data_usage_24"
             android:title="@string/database" />
 
+        <item
+            android:id="@+id/nav_database_orm"
+            android:icon="@drawable/ic_baseline_data_usage_24"
+            android:title="@string/databaseorm" />
+
     </group>
 </menu>

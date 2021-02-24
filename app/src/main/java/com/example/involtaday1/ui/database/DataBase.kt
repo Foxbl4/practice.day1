@@ -1,9 +1,9 @@
 package com.example.involtaday1.ui.database
 
 import android.content.ContentValues
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.provider.BaseColumns
 import android.util.Log
 import androidx.fragment.app.FragmentActivity
 
@@ -37,14 +37,6 @@ class DatabaseHandler(context: FragmentActivity) : SQLiteOpenHelper(
         return (Integer.parseInt("$success") != -1)
     }
 
-    fun delValue(user: DBU) {
-        val db = this.writableDatabase
-        val delCount = db.delete(TABLE_NAME, "$COLUMN_VALUES = ${user.values}", null)
-        db.close()
-        Log.v("InsertedID", "$delCount")
-    }
-
-
     fun getAllColumns(): MutableList<String> {
         val db = readableDatabase
         val listValues: MutableList<String> = mutableListOf()
@@ -69,11 +61,7 @@ class DatabaseHandler(context: FragmentActivity) : SQLiteOpenHelper(
     fun delete(word: String){
         val db = writableDatabase
         Log.d(LOG_TAG, "--- Clear mytable: ---")
-
-
         db.execSQL("DELETE FROM InvoltaTable WHERE mValues='$word'")
-
-
     }
 
     fun find(word: String): String {
@@ -86,15 +74,25 @@ class DatabaseHandler(context: FragmentActivity) : SQLiteOpenHelper(
         cursor.moveToFirst()
 
         val meanSearch = "${cursor.getString(cursor.getColumnIndex(COLUMN_ID))}. ${cursor.getString(
-            cursor.getColumnIndex(
-                COLUMN_VALUES
-            )
-        )}"
+            cursor.getColumnIndex(COLUMN_VALUES))}"
+
         cursor.close()
         db.close()
         return meanSearch
     }
 
+    fun lastElement(word: String): String{
+        val db = readableDatabase
+        val selectQuery = "SELECT  * FROM " + "InvoltaTable"
+        val cursor: Cursor = db.rawQuery(selectQuery, null)
+        cursor.moveToLast()
+        val meanSearch = "${cursor.getString(cursor.getColumnIndex(COLUMN_ID))}. ${cursor.getString(
+            cursor.getColumnIndex(
+                COLUMN_VALUES
+            )
+        )}"
+        return meanSearch
+    }
 
     companion object {
         internal const val LOG_TAG = "myLogs"

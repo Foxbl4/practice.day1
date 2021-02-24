@@ -1,11 +1,11 @@
 package com.example.involtaday1.ui.database
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.involtaday1.R
@@ -33,9 +33,9 @@ class DataBaseFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_database, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         btn_db_insert.setOnClickListener { addRVText() }
         btn_db_delete.setOnClickListener { delRVText() }
@@ -45,7 +45,6 @@ class DataBaseFragment : Fragment() {
             } else if (et_bd_search.length() > 0 ){
                 findNotAll()
             }
-
             database_recycler.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = ListAdapter(imgAndTxtArray)
@@ -71,29 +70,29 @@ class DataBaseFragment : Fragment() {
                 var success = false
                 user.values = et_bd_val.text.toString()
                 success = dbHandler!!.addValue(user)
-
+                val newItem = dbHandler!!.lastElement(user.values)
                 if (success) {
-                    toast("База данных была построена с введёным элементом!")
+                    toast("RecyclerView был построен с введёным элементом!")
                 }
-                val textList =  dbHandler!!.getAllColumns()
-                imgAndTxtArray.add(DataBaseModel(textList[textList.size-1], justImg.random()))
+                imgAndTxtArray.add(DataBaseModel(newItem, justImg.random()))
+                database_recycler.apply{ adapter?.notifyDataSetChanged() }
             }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun delRVText() {
-
         if (validation()) {
             dbHandler!!.delete(et_bd_val.text.toString())
-            imgAndTxtArray = mutableListOf()
-            getAll()
+            imgAndTxtArray.removeIf{it.mText.contains(et_bd_val.text.toString())}
+            database_recycler.apply{ adapter?.notifyDataSetChanged() }
         }
     }
 
     private fun getAll() {
+            imgAndTxtArray = mutableListOf()
             val textList =  dbHandler!!.getAllColumns()
             for (i in textList.indices){
-            imgAndTxtArray.add(DataBaseModel(textList[i], justImg.random()))
-            }
+            imgAndTxtArray.add(DataBaseModel(textList[i], justImg.random())) }
     }
 
     private fun findNotAll(){
