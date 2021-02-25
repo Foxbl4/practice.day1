@@ -1,5 +1,6 @@
 package com.example.involtaday1.ui.database_orm
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import kotlinx.android.synthetic.main.text_and_image_recycler_view.view.*
 
 class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
-    private var userList = emptyList<User>()
+    var userList = emptyList<User>()
 
     private val justImg = listOf(
         R.drawable.image_1, R.drawable.image_2, R.drawable.image_3,
@@ -24,6 +25,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         inflate(R.layout.text_and_image_recycler_view, parent, false))
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = userList[position]
         holder.itemView.list_text_in_IAT.text = "${currentItem.id}. ${currentItem.values}"
@@ -33,8 +35,10 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
     override fun getItemCount(): Int {
         return userList.size
     }
+
     fun setData(user: List<User>){
         this.userList = user
         notifyDataSetChanged()
     }
+
 }
