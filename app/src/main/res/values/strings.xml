@@ -40,6 +40,10 @@
     <string name="bd_delete">Удалить запись</string>
     <string name="database">DataBase</string>
     <string name="databaseorm">DataBaseORM</string>
+    <string name="convert">Конвертировать</string>
+    <string name="parse_json_file_is_created">JSON записан в файл</string>
+    <string name="parse_json_file_fail">Не удалось записать файл</string>
+    <string name="json_parse">JSON Parse</string>
 
     <integer-array name="images">
         <item>@drawable/image_1</item>

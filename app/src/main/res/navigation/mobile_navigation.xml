@@ -65,4 +65,10 @@
         android:label="DataBase ORM"
         tools:layout="@layout/fragment_database" />
 
+    <fragment
+        android:id="@+id/nav_parse_json"
+        android:name="com.example.involtaday1.ui.parse_json.fragment.ParseJsonFragment"
+        android:label="JSON Parse"
+        tools:layout="@layout/fragment_parse_json" />
+
 </navigation>

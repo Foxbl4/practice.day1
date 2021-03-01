@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(setOf(
                 R.id.nav_text, R.id.nav_image, R.id.nav_text_and_image, R.id.nav_text_or_image,
             R.id.nav_view_pager,R.id.nav_notification, R.id.nav_image_gallery, R.id.nav_web_wiew,
-        R.id.nav_database, R.id.nav_database_orm), drawerLayout)
+        R.id.nav_database, R.id.nav_database_orm, R.id.nav_parse_json), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.text_and_image_recycler_view.view.*
 
 class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
-    var userList = emptyList<User>()
+    private var userList = emptyList<User>()
 
     private val justImg = listOf(
         R.drawable.image_1, R.drawable.image_2, R.drawable.image_3,

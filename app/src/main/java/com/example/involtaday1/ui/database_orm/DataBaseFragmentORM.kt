@@ -10,12 +10,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.involtaday1.R
 import kotlinx.android.synthetic.main.fragment_database.*
 import kotlinx.android.synthetic.main.fragment_database.view.*
-import kotlinx.android.synthetic.main.fragment_text_and_image.view.*
-import kotlinx.android.synthetic.main.text_and_image_recycler_view.view.*
 import org.jetbrains.anko.support.v4.toast
 
 
@@ -34,7 +33,6 @@ class DataBaseFragmentORM : Fragment() {
         val recyclerView = view.database_recycler
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
             adapter.setData(user)
@@ -49,16 +47,17 @@ class DataBaseFragmentORM : Fragment() {
         }
 
         view.btn_bd_search.setOnClickListener{
-            if (et_bd_search.text.toString().isNotEmpty()) {
-                val testList: MutableList<User> = mutableListOf()
-                val mValue = et_bd_search.text.toString().substringAfter(".")
-                val id: Int = et_bd_search.text.toString().substringBefore(".").toInt()
-                testList.add(User(id, mValue))
-                mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer {
-                    adapter.setData(testList)
+            val searchValue = et_bd_search.text.toString()
+            if (inputCheck(searchValue)){
+                mUserViewModel.searchByValue(searchValue).observe(viewLifecycleOwner, Observer { user ->
+                    if (user.isEmpty()) {
+                        toast("Wrong Data!")
+                        adapter.setData(listOf())
+                    }
+                    else adapter.setData(user)
                 })
-            } else{
-                mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+            }
+            else {
                 mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
                     adapter.setData(user)
                 })
@@ -69,23 +68,19 @@ class DataBaseFragmentORM : Fragment() {
     }
 
     private fun deleteUser() {
-        val mValue = et_bd_val.text.toString().substringAfter(".")
-        val id : Int = et_bd_val.text.toString().substringBefore(".").toInt()
+        val mValue = et_bd_val.text.toString()
         if (inputCheck(mValue)) {
-            val user = User(id, mValue)
-            mUserViewModel.deleteUser(user)
-            toast("Successfully removed")
+            mUserViewModel.deleteByValue(mValue)
+                toast("Successfully removed")
         }
     }
 
     private fun insertDataToDataBase() {
         val value = et_bd_val.text.toString()
-
         if (inputCheck(value)){
             val user = User(0,value)
             mUserViewModel.addUser(user)
             toast("Successfully added!")
-
         }
     }
 
